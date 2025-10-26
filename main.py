@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect
 import webbrowser, threading
 
-from actions import registration, admission, exit  # 👈 Import modules
+from actions import registration, admission, exit
 
 app = Flask(__name__)
 app.register_blueprint(registration.bp)
