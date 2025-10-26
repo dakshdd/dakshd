@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Razorpay Payment</title>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+    .container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 8px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: green;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: darkgreen;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Make a Payment</h2>
+    <button id="rzp-button">Pay Now</button>
+  </div>
+
+  <script>
+    var options = {
+      "key": "rzp_test_RS3KVJrLhALmEB", // Replace with your Razorpay Key ID
+      "amount": "1000", // Amount in paise (₹10.00)
+      "currency": "INR",
+      "name": "DAKSH D SOFTWARE",
+      "description": "Test Transaction",
+      "image": "https://yourdomain.com/logo.png", // optional
+      "handler": function (response){
+        alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+        // You can redirect or call Flask backend here
+      },
+      "prefill": {
+        "name": "Manjeet Singh",
+        "email": "dakshdd@gmail.com",
+        "contact": "9810124820"
+      },
+      "theme": {
+        "color": "#3399cc"
+      }
+    };
+
+    var rzp1 = new Razorpay(options);
+    document.getElementById('rzp-button').onclick = function(e){
+      rzp1.open();
+      e.preventDefault();
+    }
+  </script>
+</body>
+</html>

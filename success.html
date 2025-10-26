@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Success</title>
+  <script>
+    function autoPrintReceipt(receiptUrl) {
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = receiptUrl;
+      document.body.appendChild(iframe);
+
+      iframe.onload = function () {
+        iframe.contentWindow.focus();
+        iframe.contentWindow.print();
+      };
+    }
+  </script>
+</head>
+<body onload="autoPrintReceipt('{{ receipt_url }}')">
+  <h2>Registration Successful!</h2>
+  <p>Receipt is opening for print...</p>
+</body>
+</html>

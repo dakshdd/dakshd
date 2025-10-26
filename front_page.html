@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>School Management Dashboard (Jan.2026)</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Background image */
+        body {
+            background: url("{{ url_for('static', filename='school.jpg') }}") no-repeat center center fixed; 
+			background-size: cover;
+        }
+
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.85);
+            height: 100%;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 300px;
+            background-color: #ffffff;
+            padding: 40px 20px;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+        }
+
+        .sidebar h1 {
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 22px;
+            text-align: center;
+        }
+
+        .sidebar form button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 12px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .sidebar form button:hover {
+            background-color: #0056b3;
+        }
+
+        .content {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <h1 style="text-decoration: underline;">MAIN MENU</h1>
+			    <form method="POST" action="/handle_action">
+                <button name="action" value="registration">Registration</button>
+                <button name="action" value="new_admission">New Admission</button>
+                <button name="action" value="fee_entry">Fee Entry</button>
+				<button name="action" value="reprin">Duplicate Receipt</button>
+                <button name="action" value="tcancel">Transaction Cancel</button>
+                <button name="action" value="sledger">Student Ledger</button>
+                <button name="action" value="defaulter_report">Defaulter Report</button>
+                <button name="action" value="printing_report">Printing Report</button>
+                <button name="action" value="utils">Utils</button>
+                <button name="action" value="exit">Exit</button>
+            </form>
+        </div>
+
+        <!-- Right Content Area (optional) -->
+        <div class="content">
+            Welcome to your SHARDA INTERNATIONAL SCHOOL
+        </div>
+    </div>
+</body>
+</html>
